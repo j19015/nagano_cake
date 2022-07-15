@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   #顧客用
   devise_for :end_users, controllers: {
     registrations: 'end_user/registrations',
-    session: 'end_user/sessions'
+    sessions: 'end_user/sessions'
   }
 
   #管理者用
