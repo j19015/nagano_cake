@@ -1,59 +1,64 @@
-<h2>Sign up</h2>
+<div class="p-5">
+  <h2><span class="bg-gray">新規会員登録</span></h2>
+  <div class="pl-3">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "end_user/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "end_user/shared/error_messages", resource: resource %>
+      <div class="field mb-3 mt-3">
+        <%= f.label :"名前(姓)" ,class: "w-15" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",class: "rounded" %>
+        <%= f.label :"(名)　",class: "w-15 text-right" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",class: "rounded" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"名前(姓)" %>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-    <%= f.label :"(名)" %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
+      <div class="field mb-3">
+        <%= f.label :"フリガナ(セイ)" ,class: "w-15"%>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",class: "rounded" %>
+        <%= f.label :"(メイ)",class: "w-15 text-right" %>
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",class: "rounded" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"フリガナ(セイ)" %>
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-    <%= f.label :"(メイ)" %>
-    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-  </div>
+      <div class="field mb-3">
+        <%= f.label :"メールアドレス",class: "w-15" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "first_name_kana",class: "rounded" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "first_name_kana" %>
-  </div>
+      <div class="field mb-3">
+        <%= f.label :"郵便番号" ,class: "w-15"%>
+        <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code",class: "rounded" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"郵便番号" %>
-    <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
-  </div>
+      <div class="field mb-3">
+        <%= f.label :"住所",class: "w-15" %>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address",class: "rounded" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :"住所" %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
+      <div class="field mb-3">
+        <%= f.label :"電話番号" ,class: "w-15"%>
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" ,class: "rounded"%>
+      </div>
 
-  <div class="field">
-    <%= f.label :"電話番号　" %>
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
+      <div class="field mb-3">
+        <%= f.label :"",class: "w-15" do %>
+        <% if @minimum_password_length %>
+          パスワード<em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" ,class: "rounded"%>
+      </div>
 
-  <div class="field">
-    <%= f.label :"パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
+      <div class="field mb-3">
+        <%= f.label :"パスワード(確認用)",class: "w-15" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "rounded" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "新規登録",class: "btn btn-success w-20 mt-5 ml-30"%>
+      </div>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
-  <div class="field">
-    <%= f.label :"パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mt-5">
+    <h2><span class="bg-gray">既に登録済みの方</span></h2>
+    <p class="pl-5 mt-3"><strong><a href="/end_users/sign_in" class="text-blue">こちら</a></strong>からログインしてください。</strong>
   </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録",class: "btn btn-success"%>
-  </div>
-<% end %>
-
-
-<%= render "end_user/shared/links" %>
+</div>
