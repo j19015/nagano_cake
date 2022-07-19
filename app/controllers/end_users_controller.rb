@@ -7,7 +7,7 @@ class EndUsersController < ApplicationController
     end
 
     def edit
-
+        @end_user=current_end_user
     end
 
     def update

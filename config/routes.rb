@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   #end_users
 
   get "/end_users/mypage"=>"end_users#show" , as: "mypage"
-  get "/end_users/information_edit"=>"end_users#edit"
+  get "/end_users/information/edit"=>"end_users#edit",as: "edit_end_user"
   patch "/end_users/information"=>"end_users#update"
-  get "/end_users/unsubcribe_confirm"=>"end_users#unsubscribe_confirm"
+  get "/end_users/unsubscribe_confirm"=>"end_users#unsubscribe_confirm"
   patch "/end_users/unsubscribe"=>"end_users#unsubscribe"
 
 

@@ -1,0 +1,46 @@
+<div class="p-5 ml-10 mr-10">
+  <h2><span class="bg-gray">会員情報編集</span></h2>
+  <div class="pl-3">
+    <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f|  %>
+
+      <div class="field mb-3 mt-3">
+        <%= f.label :"名前(姓)" ,class: "w-15" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",class: "rounded" %>
+        <%= f.label :"(名)　",class: "w-15 text-right" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",class: "rounded" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.label :"フリガナ(セイ)" ,class: "w-15"%>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",class: "rounded" %>
+        <%= f.label :"(メイ)",class: "w-15 text-right" %>
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",class: "rounded" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.label :"メールアドレス",class: "w-15" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "first_name_kana",class: "rounded" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.label :"郵便番号" ,class: "w-15"%>
+        <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code",class: "rounded" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.label :"住所",class: "w-15" %>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address",class: "rounded w-50" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.label :"電話番号" ,class: "w-15"%>
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" ,class: "rounded"%>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "編集内容を保存",class: "btn btn-success w-20 mt-5 ml-30"%>
+        <%= link_to "退会する",end_users_unsubscribe_confirm_path,class:"btn btn-danger  w-10 mt-5 ml-10" %>
+      </div>
+    <% end %>
+  </div>
+</div>
