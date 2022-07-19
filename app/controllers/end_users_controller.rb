@@ -19,6 +19,7 @@ class EndUsersController < ApplicationController
     end
 
     def unsubscribe
-
+        current_end_user.update(is_deleted: true)
+        redirect_to end_user_session_path
     end
 end
