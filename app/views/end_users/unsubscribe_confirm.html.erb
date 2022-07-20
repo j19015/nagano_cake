@@ -6,7 +6,7 @@
     <h3 class="text-center">退会する場合は「退会する」をクリックしてください。</h3>
     <div class="d-flex justify-content-center mt-5">
       <%= link_to "退会しない",mypage_path,class:"btn btn-primary btn-lg" %>
-      <%= link_to "退会する","/end_users/unsubscribe",method: :patch,class:"btn btn-danger ml-3 btn-lg" %>
+      <%= link_to "退会する","/end_users/unsubscribe",method: :patch, data: {confirm: "本当に退会しますか？"},class:"btn btn-danger ml-3 btn-lg" %>
     </div>
   </div>
 </div>

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
+    resources :end_users,only:[:index, :show, :edit, :update]
   end
   #devise_for :admins
   #devise_for :end_users
   #今回はdeviseのcontrollerを作成したのでどのcontrollerをどのURLに適応させるのか記述する必要がある？
 
-  get "/"=> "end_users#top"
+  root to: "end_users#top"
   get "/about"=>"homes#about"
 
   #end_users

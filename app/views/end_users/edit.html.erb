@@ -1,9 +1,10 @@
-<div class="p-5 ml-10 mr-10">
+<div class="p-5 ml-10 mr-10 w-80">
   <h2><span class="bg-gray">会員情報編集</span></h2>
   <div class="pl-3">
-    <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f|  %>
-
-      <div class="field mb-3 mt-3">
+    <%= render 'erros',obj: @end_user %>
+    <%= form_with model: @end_user, url: end_users_information_path, local: true do |f|  %>
+    <!-- フォーム内のエラーの際に出るclass対策で https://qiita.com/uminchu-1173/items/bb1ffab51aa9eb9d98fd　を参考にした-->
+      <div class="field mb-3 mt-3 w-100">
         <%= f.label :"名前(姓)" ,class: "w-15" %>
         <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",class: "rounded" %>
         <%= f.label :"(名)　",class: "w-15 text-right" %>

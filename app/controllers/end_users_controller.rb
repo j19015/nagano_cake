@@ -11,7 +11,12 @@ class EndUsersController < ApplicationController
     end
 
     def update
-
+        @end_user=current_end_user
+        if @end_user.update(end_user_params)
+            redirect_to mypage_path
+        else
+            render :edit
+        end
     end
 
     def unsubscribe_confirm
@@ -21,5 +26,11 @@ class EndUsersController < ApplicationController
     def unsubscribe
         current_end_user.update(is_deleted: true)
         redirect_to end_user_session_path
+    end
+
+    private
+    
+    def end_user_params
+        params.require(:end_user).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :post_code, :address, :email, :phone_number)
     end
 end

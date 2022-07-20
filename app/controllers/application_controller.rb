@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
         if end_user_signed_in?
             mypage_path
-        else
-            admin_top_path
+        elsif admin_signed_in?
+            admin_homes_top_path
         end
     end
 
@@ -15,11 +15,16 @@ class ApplicationController < ActionController::Base
         mypage_path
     end
 
+    def after_sign_out_path_for(resource)
+        end_user_session_path
+    end
+
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number])
     end
 
     def unsubscribe_end_user_confirm
+        #参考ページ https://qiita.com/mnooooooooo/items/c96d10032ec02a9e443c
         sign_out_and_redirect(current_end_user) if current_end_user.is_deleted
     end
     

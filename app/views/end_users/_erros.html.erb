@@ -1,0 +1,10 @@
+<div>
+  <% if obj.errors.any? %>
+    <h2 style="color:red"><%= obj.errors.count %>errors prohibited this obj from being saved:</h2>
+    <ul style="color:red">
+      <% obj.errors.full_messages.each do |message| %>
+        <li style="color:red"><%= message %></li>
+      <% end %>
+    </ul>  
+  <% end %>
+</div>

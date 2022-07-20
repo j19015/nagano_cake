@@ -1,0 +1,31 @@
+<div class="p-5 ml-10 mr-10 w-80">
+  <h2><span class="bg-gray">会員情報一覧</span></h2>
+  <div class="mt-5">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><p style="text-decoration: underline;"><%= user.first_name %><%= user.last_name %></p></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_deleted %>
+                <p class="text-secondary">退会</p>
+              <% else %>
+                <p class="text-success">有効</p>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
