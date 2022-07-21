@@ -1,0 +1,10 @@
+<div class="p-5 ml-10 mr-10 w-80">
+  <h2><span class="bg-gray">ジャンル一覧・追加</span></h2>
+  <div class="mt-5">
+    <%= render "end_users/erros",obj: @genre %>
+    <%= form_with model: @genre,url: admin_genre_path(@genre.id),method: :patch do |f| %>
+      ジャンル名<%= f.text_field :name,class: "ml-2" %>
+      <%= f.submit "変更を保存",class: "btn btn-success ml-2" %>
+    <% end %>
+  </div>
+</div>
