@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'items/index'
-  get 'items/show'
+  
+  #pubicのitem
+  resources :items,only:[:index,:show]
+
   namespace :admin do
     get 'homes/top'
     resources :end_users,only:[:index, :show, :edit, :update]
