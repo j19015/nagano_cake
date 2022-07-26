@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  #publicのcar_item
+  resources :cart_items,only:[:index,:update,:destroy,:create]
+  delete "/cart_items/destroy_all"=>"cart_items#destroy_all" ,as: "cart_item_destroy_all"
   #pubicのitem
   resources :items,only:[:index,:show]
 

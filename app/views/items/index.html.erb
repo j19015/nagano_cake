@@ -23,8 +23,10 @@
       <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
         <div class="w-20 mr-3">
-          <%= image_tag item.get_product_image(100,100),size:"100x100"%><br>
-          <p><%= item.name %></p>
+          <%= link_to  item_path(item.id) do %>
+            <%= image_tag item.get_product_image(100,100),size:"100x100"%><br>
+            <p><%= item.name %></p>
+          <% end %>
           <p>¥<%= item.price %></p>
         </div>
         <% end %>
