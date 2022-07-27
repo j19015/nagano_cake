@@ -29,52 +29,59 @@ Genre.create!(
 Genre.create!(
     name: "ゼリー"
 )
-Item.create!(
+item=Item.create!(
     genre_id: 1, 
     name: "長野ケーキ", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
-Item.create!(
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/cake.jpeg')),filename: 'cake.jpeg')
+item=Item.create!(
     genre_id: 2, 
     name: "長野マフィン", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
-Item.create!(
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/mafin.jpeg')),filename: 'mafin.jpeg')
+item=Item.create!(
     genre_id: 3, 
     name: "長野ゼリー", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
-Item.create!(
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/jelly.jpeg')),filename: 'jelly.jpeg')
+item=Item.create!(
     genre_id: 3, 
     name: "長野ゼリー2", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
-Item.create!(
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/jelly.jpeg')),filename: 'jelly.jpeg')
+item=Item.create!(
     genre_id: 3, 
     name: "長野ゼリー5", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
-Item.create!(
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/jelly.jpeg')),filename: 'jelly.jpeg')
+item=Item.create!(
     genre_id: 3, 
     name: "長野ゼリー6", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
-Item.create!(
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/jelly.jpeg')),filename: 'jelly.jpeg')
+item=Item.create!(
     genre_id: 3, 
     name: "長野ゼリー7", 
     explanation: "これは一つ目の検証データ", 
     price: 1000, 
     is_saled: true
 )
+item.product_image.attach(io: File.open(Rails.root.join('app/assets/images/jelly.jpeg')),filename: 'jelly.jpeg')
