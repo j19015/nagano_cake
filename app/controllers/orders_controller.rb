@@ -38,7 +38,6 @@ class OrdersController < ApplicationController
     if @order.save!
       current_end_user.cart_items.each do |cart_item|
         @cart_item=@order.order_details.new(item_id:cart_item.item.id,price: cart_item.item.price,amount: cart_item.amount,order_status: Order.order_statuses.key(0))
-        binding.pry
         @cart_item.save
       end
       current_end_user.cart_items.destroy_all
@@ -51,9 +50,11 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @orders=Order.all
   end
 
   def show
+    @order=Order.find(params[:id])
   end
 
   private

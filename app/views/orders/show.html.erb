@@ -1,2 +1,72 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="p-5 ml-10 mr-10 w-80">
+  <h2><span class="bg-gray">注文履歴詳細</span></h2>
+  <div class="d-flex mt-5">
+    <div class="w-60">
+      <h3>注文情報</h3>
+      <table class="table mt-3">
+        <tr>
+          <td class="bg-gray">注文日</td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td class="bg-gray">配送先</td>
+          <td>
+              <p>〒<%= @order.post_code %></p>
+              <p><%= @order.address %></p>
+              <p><%= @order.name%></p>
+          </td>
+        </tr>
+        <tr>
+          <td class="bg-gray">支払方法</td>
+          <td><%= Order.pay_methods_i18n[@order.pay_method] %></td>
+        </tr>
+        <tr>
+          <td class="bg-gray">ステータス</td>
+          <td><%= Order.order_statuses_i18n[@order.order_status] %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="w-30 ml-auto">
+      <h3>請求情報</h3>
+      <table class="table">
+        <tr>
+          <td class="bg-gray">商品合計</td>
+          <td><%= @order.total_payment %></td>
+        </tr>
+        <tr>
+          <td class="bg-gray">配送料</td>
+          <td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th class="bg-gray">ご請求額</th>
+          <td><%= @order.total_payment+@order.postage %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="mt-5">
+    <h3>注文内容</h3>
+    <div class="w-60">
+      <table class="table">
+        <thead class="bg-gray">
+          <tr>
+            <th>商品</th>
+            <th>単価</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= (order_detail.item.with_tax_price)*(order_detail.amount) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
