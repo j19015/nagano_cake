@@ -1,5 +1,35 @@
 <div class="p-5 ml-10 mr-10 w-80">
-  <h2><span class="bg-gray">注文履歴一覧</span></h2>
+  <h2><span class="bg-gray">注文履歴詳細</span></h2>
+  <div class="mt-5 ml-5">
+    <div class="d-flex">
+      <div class="w-20"><h3><strong>購入者</strong></h3></div>
+      <div class="ml-5"><h3><%= @order_detail.end_user.first_name+@order_detail.end_user.last_name %></h3></div>
+    </div>
+    <div class="d-flex">
+      <div class="w-20"><h3><strong>注文日</strong></h3></div>
+      <div class="ml-5"><h3><%= @order_detail.created_at.strftime("%Y/%m/%d") %></h3></div>
+    </div>
+    <div class="d-flex">
+      <div class="w-20"><h3><strong>配送先</strong></h3></div>
+      <div class="ml-5"><h3><%= @order_detail.full_address %></h3></div>
+    </div>
+    <div class="d-flex">
+      <div class="w-20"><h3><strong>支払方法</strong></h3></div>
+      <div class="ml-5"><h3><%= Order.order_statuses_i18n[@order_detail.order_status] %></h3></div>
+    </div>
+    <div class="d-flex">
+      <div class="w-20"><h3><strong>注文ステータス</strong></h3></div>
+      <div class="ml-5">
+        <%= form_with model:@order_detail,url: admin_order_path(@order_detail.id),method: :patch do |f| %>
+          <div class="d-flex">
+            <%= f.select :order_status, Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"),k]} ,{},{class: 'form-control'} %>
+            <%= f.submit "更新",class:"btn btn-success ml-5"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
   <table>
     <thead class="bg-gray">
       <tr>
