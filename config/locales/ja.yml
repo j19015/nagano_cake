@@ -1,0 +1,13 @@
+# ja.yml
+ja:
+  enums:
+    order:
+      pay_method:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'
+      order_status:
+        wait: "入金待ち"
+        wait_confirm: "入金確認"
+        making: "製作中"
+        delivery_wait: "発送準備中"
+        delivery_complete: "発送済み"

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  #publicのorders
+  post "orders/confirm"=>"orders#confirm",as:"orders_confirm"
+  get "orders/complete"=>"orders#complete",as:"orders_complete"
+  resources :orders,only:[:index,:show,:create,:new]
+
   #publicのaddress
   resources :addresses,only:[:index,:edit,:create,:update,:destroy]
 
