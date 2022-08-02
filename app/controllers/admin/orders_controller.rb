@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def show
-    @order_detail=Order.find(params[:id])
+    @order=Order.find(params[:id])
   end
 
   def index
