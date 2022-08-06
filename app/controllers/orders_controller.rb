@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :cart_confirm,only:[:confirm, :new]
   def new
     @order=Order.new
   end
@@ -47,6 +48,7 @@ class OrdersController < ApplicationController
       flash[:notice]="エラーが発生しました。"
       render :confirm
     end
+    
   end
 
   def index
@@ -57,6 +59,12 @@ class OrdersController < ApplicationController
     @order=Order.find(params[:id])
   end
 
+  def cart_confirm
+    if current_end_user.cart_items.count==0
+      redirect_to cart_items_path,notice:"カートの中身が空です"
+    end
+  end
+
   private
   def order_params
     params.require(:order).permit(:pay_method,:address,:total_payment)
@@ -64,4 +72,5 @@ class OrdersController < ApplicationController
   def order_params_complete
     params.require(:order).permit(:name,:post_code,:pay_method,:address,:total_payment)
   end
+
 end

@@ -44,7 +44,7 @@ class CartItemsController < ApplicationController
     cart_items=current_end_user.cart_items
     cart_items.each do |cart_item|
       if !cart_item.item.is_saled
-        flash[:notice]="カート内の販売停止中の表品を削除しました"
+        flash[:notice]="カート内の販売停止中の商品を削除しました"
         cart_item.destroy
       end
     end
