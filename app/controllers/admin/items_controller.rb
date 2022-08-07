@@ -3,6 +3,12 @@ class Admin::ItemsController < ApplicationController
     @items=Item.all
   end
 
+  def search
+    #binding.pry
+    @items=Item.where('name like ?',"%#{params[:name]}%")
+    render :index
+  end
+
   def new
     @item=Item.new
     @genres=Genre.all

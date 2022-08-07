@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   #pubicのitem
   resources :items,only:[:index,:show]
 
+  #item検索用
+  get 'admin/items/search'=>"admin/items#search"
   namespace :admin do
     get 'homes/top'
     resources :order_details,only:[:update]
