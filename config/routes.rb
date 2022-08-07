@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :cart_items,only:[:index,:update,:destroy,:create]
 
   #pubicのitem
+  get 'items/search'=>"items#search",as:"genre_search"
   resources :items,only:[:index,:show]
 
   #item検索用
