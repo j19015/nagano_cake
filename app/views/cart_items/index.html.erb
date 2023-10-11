@@ -30,7 +30,6 @@
             <td><%= cart_item.subtotal %></td>
             <td><%= link_to "削除する",cart_item_path(cart_item.id),method: :delete,class:"btn btn-danger"%></td>
           </tr>
-          <% @amount+=cart_item.subtotal %>
         <% end %>
       </tbody>
     </table>
@@ -44,7 +43,7 @@
             <strong>合計金額</strong>
           </td>
           <td>
-            <strong>￥<%= @amount %></strong>
+            <strong>￥<%= @cart_items.sum{ |cart_item| cart_item.item.price} %></strong>
           </td>
         </tr>
       </table>
