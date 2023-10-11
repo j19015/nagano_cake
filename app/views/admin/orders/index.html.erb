@@ -15,7 +15,7 @@
           <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id) %></td>
           <td><%= order.end_user.first_name+order.end_user.last_name %></td>
           <td><%= order.order_details.sum{|hash| hash[:amount]} %></td>
-          <td><%= Order.order_statuses_i18n[order.order_status] %></td>
+          <td><%= order.order_status_i18n %></td>
         </tr>
       <% end %>
     </tbody>
