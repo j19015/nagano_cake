@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   before_action :cart_confirm
   def index
-    @cart_items=CartItem.all
+    @cart_items= current_end_user.cart_items
     @amount=0
   end
 
