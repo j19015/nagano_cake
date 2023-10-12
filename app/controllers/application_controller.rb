@@ -4,9 +4,11 @@ class ApplicationController < ActionController::Base
     #ログインしているときは毎回is_deletedの値を確認させ続ければいい。
     before_action :unsubscribe_end_user_confirm,  if: :end_user_signed_in?
     def after_sign_in_path_for(resource)
-        if end_user_signed_in?
+        # is_aは型があっていればtrueを返す。
+        # resourceには User型やAdmin型が入るのでそれで条件分岐している形
+        if resource.is_a?(EndUser)
             mypage_path
-        elsif admin_signed_in?
+        elsif resource.is_a?(Admin)
             admin_homes_top_path
         end
     end
