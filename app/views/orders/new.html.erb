@@ -19,7 +19,7 @@
       <div class="field ml-5 mt-3">
         <%= f.radio_button :address_select, 2 %>登録済み住所から選択<br/>
         <div class="mt-3 ml-5">
-          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address),class:"rounded" %>
+          <%= f.select :address_id, options_from_collection_for_select(current_end_user.addresses, :id, :full_address),class:"rounded" %>
         </div>
       </div>
       <div class="field ml-5 mt-3">
