@@ -8,8 +8,7 @@ class CartItemsController < ApplicationController
   def update
     @cart_item=CartItem.find_by(end_user_id: current_end_user.id,item_id: cart_item_params[:item_id])
     @cart_item.update(amount: cart_item_params[:amount])
-    flash[:notice]="商品の個数を更新しました"
-    redirect_to cart_items_path
+    redirect_to cart_items_path,notice: "商品の個数を更新しました"
   end
 
   def create
