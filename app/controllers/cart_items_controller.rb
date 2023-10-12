@@ -2,7 +2,6 @@ class CartItemsController < ApplicationController
   before_action :cart_confirm
   def index
     @cart_items= current_end_user.cart_items
-    @amount=0
   end
 
   def update
@@ -12,10 +11,9 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    if CartItem.find_by(end_user_id: current_end_user.id,item_id: cart_item_params[:item_id])
-      @cart_item=CartItem.find_by(end_user_id: current_end_user.id,item_id: cart_item_params[:item_id])
-      amount=@cart_item.amount+(cart_item_params[:amount]).to_i
-      @cart_item.update(amount: amount)
+    @cart_item=CartItem.find_by(end_user_id: current_end_user.id,item_id: cart_item_params[:item_id])
+    if @cart_item
+      @cart_item.update(amount: @cart_item.amount+(cart_item_params[:amount]).to_i)
       flash[:notice]="商品の個数を追加しました"
     else
       @cart_item=CartItem.new(cart_item_params)
@@ -27,10 +25,8 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item=CartItem.find(params[:id])
-    @cart_item.destroy
-    flash[:notice]="カート内の一部商品の削除を行いました"
-    redirect_to cart_items_path
+    CartItem.find(params[:id]).destroy
+    redirect_to cart_items_path,notice: "カート内の一部商品の削除を行いました"
   end
 
   def destroy_all
@@ -40,8 +36,7 @@ class CartItemsController < ApplicationController
   end
 
   def cart_confirm
-    cart_items=current_end_user.cart_items
-    cart_items.each do |cart_item|
+    current_end_user.cart_items.each do |cart_item|
       if !cart_item.item.is_saled
         flash[:notice]="カート内の販売停止中の商品を削除しました"
         cart_item.destroy
