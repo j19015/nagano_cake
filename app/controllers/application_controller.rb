@@ -13,13 +13,16 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def after_sign_up_path_for(resource)
-        mypage_path
-    end
-
     def after_sign_out_path_for(resource)
-        end_user_session_path
+        # is_aは型があっていればtrueを返す。
+        # resourceには User型やAdmin型が入るのでそれで条件分岐している形
+        if resource == :end_user
+            end_user_session_path
+        elsif resource == :admin
+            admin_session_path
+        end
     end
+    
 
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number])
