@@ -83,14 +83,16 @@
       <% end %>
     </header>
 
-    <body>
-    <div class="bg-success text-center">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-    </div>
-    <%= yield %>
-    </body>
+    <main>
+      <div class="bg-success text-center">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+      </div>
+      <div>
+        <%= yield %>
+      </div>
+    </main>
 
     <footer>
 
