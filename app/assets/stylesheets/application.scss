@@ -19,3 +19,22 @@
     padding:0;
     box-sizing: border-box;
 }
+
+.bg-img{
+  background-image: url("nagano_cake_top.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  box-shadow: 10px 10px 15px -10px;
+  height: 400px;
+  width: 100%;
+}
+
+.card-hover {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

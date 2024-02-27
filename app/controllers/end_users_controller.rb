@@ -1,7 +1,9 @@
 class EndUsersController < ApplicationController
     def top
-        
+        @genres=Genre.all
+        @items = Item.where(is_saled: true).order(created_at: "DESC").limit(4)
     end
+    
     def show
 
     end
